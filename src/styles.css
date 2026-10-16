@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Public Sans", "Avenir Next", "Segoe UI", sans-serif;
+  --font-serif: "Newsreader", "Iowan Old Style", Palatino, Georgia, serif;
+  --color-bg: #14120e;
+  --color-surface: #1e1b16;
+  --color-surface-2: #29251e;
+  --color-fg: #f3efe4;
+  --color-muted: #a39888;
+  --color-faint: #6f675c;
+  --color-line: #3a342b;
+  --color-brass: #c4a46a;
+  --color-brass-ink: #1a140c;
+  --color-sage: #9aaf96;
+  --color-clay: #c47a52;
+  --color-paper: #f3eee4;
+  --color-paper-ink: #1c1914;
+  --color-paper-muted: #5c564c;
+  --color-paper-line: #ddd4c4;
+  --radius-sm: 0.2rem;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-brass);
+    color: var(--color-brass-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 2px;
+  }
+}
+
+.pb-dock {
+  padding-bottom: calc(5.25rem + env(safe-area-inset-bottom));
+}
+
+.dock {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.hash {
+  overflow-wrap: anywhere;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.01em;
+}
+
+.rail-dot {
+  position: absolute;
+  left: -1.4rem;
+  top: 0.55rem;
+  height: 0.45rem;
+  width: 0.45rem;
+  border-radius: 999px;
+  background: var(--color-brass);
+}
+
+@media (min-width: 1024px) {
+  .pb-dock {
+    padding-bottom: 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+@media print {
+  body {
+    background: white !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .sheet {
+    box-shadow: none !important;
+  }
+}
